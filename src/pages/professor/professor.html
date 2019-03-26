@@ -1,0 +1,52 @@
+
+    <!-- <ion-header>
+
+        <ion-navbar>
+          <ion-title>Professor</ion-title>
+        </ion-navbar>
+      
+      </ion-header> -->
+      <ion-header>
+        <ion-navbar>
+          <ion-buttons start>
+            <button ion-button icon-only>
+              <ion-icon name="contact"></ion-icon>
+            </button>
+          </ion-buttons>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Professor" [(ngModel)]="nome"></ion-input>
+              
+          </ion-item>
+      
+          <ion-buttons end>
+            <button ion-button icon-only (click)="searchByName()">
+              <ion-icon name="search"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+      </ion-header>
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>           
+       
+          <div *ngFor="let lista of listaProfessores">
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="../assets/imgs/people.png">
+                  </ion-avatar> 
+
+              <ion-col>  <h3> <b>Professor(a):</b> {{lista.nome}}</h3></ion-col> 
+              <ion-col>  <h6><b>Bloco:</b> {{lista.Bloco}}<p> </p> <b>Sala:</b> {{lista.Sala}} <p> </p><b>Disciplina:</b> {{lista.Disciplina}}</h6></ion-col> 
+              
+              <hr>
+            </ion-item>
+              </div>
+          
+      
+            
+        </ion-item>
+      </ion-list>
+</ion-content>
