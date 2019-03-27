@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FiltroProfessor } from '../../app/dominio/FiltroProfessor';
+import { Disciplina } from '../../app/dominio/Disciplina';
+import { Curso } from '../../app/dominio/Curso';
 
 
 /*
@@ -19,6 +21,8 @@ export class LocalizaServiceProvider {
   PORTA_SERVICO: string;
   NS_PROFESSOR:string = '/professor';
   NS_PESQUISAR: string ='/pesquisar';
+  NS_DISCIPLINA:string = '/disciplina';
+  NS_CURSO:string = '/curso';
   URL: string;
 
   constructor(public http: HttpClient) {
@@ -37,6 +41,14 @@ export class LocalizaServiceProvider {
     return this.http.get<Professor[]>(`${this.HOST}${this.PORTA_SERVICO}${this.NS_PROFESSOR}`);
 
   }
+  listarDisciplina(): Observable<Disciplina[]>{
+    return this.http.get<Disciplina[]>(`${this.URL}${this.NS_DISCIPLINA}`);
+    }
+
+    listarCurso(): Observable<Curso[]>{
+      return this.http.get<Curso[]>(`${this.URL}${this.NS_CURSO}`);
+      }
+
 
   pesquisar(f : FiltroProfessor):Observable<Professor[]>{
     return this.http.post<Professor[]>(`${this.HOST}${this.PORTA_SERVICO}${this.NS_PROFESSOR}${this.NS_PESQUISAR}`
@@ -47,5 +59,7 @@ export class LocalizaServiceProvider {
   searchByName(nome: string): Observable<Professor[]>{
     return this.http.get<Professor[]>(`${this.URL}${this.NS_PROFESSOR}/${nome}`);
    }
+
+
 
 }

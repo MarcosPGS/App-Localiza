@@ -30,7 +30,7 @@ export class ProfessorPage {
   ionViewDidLoad() {
     this.ps.listar().subscribe(dadosDoServidor=>{
       this.listaProfessores =dadosDoServidor;
-      console.log(dadosDoServidor);
+      
       
     },error => {
 

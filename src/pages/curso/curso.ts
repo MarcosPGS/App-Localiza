@@ -1,5 +1,11 @@
+import { ListaProfessorPesquisa } from './../../app/dominio/ListaProfessorPesquisa';
+import { LocalizaServiceProvider } from './../../providers/localiza-service/localiza-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FiltroProfessor } from '../../app/dominio/FiltroProfessor';
+import { Curso } from '../../app/dominio/Curso';
+import { Disciplina } from '../../app/dominio/Disciplina';
+import { Professor } from '../../app/dominio/Professor';
 
 /**
  * Generated class for the CursoPage page.
@@ -14,12 +20,40 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'curso.html',
 })
 export class CursoPage {
+  listaProfessorPesquisa: ListaProfessorPesquisa[] = [];
+  filtro: FiltroProfessor = new FiltroProfessor();
+  listaCursos: Curso[] = [];
+  listaDisciplinas: Disciplina[] = [];
+  listaProfessores: Professor[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private cs :LocalizaServiceProvider,
+    private ds :LocalizaServiceProvider, private ps: LocalizaServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CursoPage');
+
+
+    this.cs.listarCurso().subscribe(dadosDoServidor => {
+      this.listaCursos = dadosDoServidor;
+    }, error => {
+    });
+
+    this.ds.listarDisciplina().subscribe(dadosDoServidor => {
+      this.listaDisciplinas = dadosDoServidor;
+    }, error => {
+    });
   }
 
+  pesquisar() {
+    this.ps.pesquisar(this.filtro).subscribe(dadosDoServidor => {
+      this.listaProfessores = dadosDoServidor;
+     
+
+    }, error => {
+      console.log(error);
+      
+    });
+  }
+
+  
 }

@@ -14,5 +14,51 @@
 
 
 <ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label>Curso</ion-label>
+          <ion-select [(ngModel)]="filtro.curso"   interface="action-sheet">
+            <ion-option  *ngFor="let lista of listaCursos">{{lista.nome}}</ion-option>           
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
+      <ion-list>
+          <ion-item>
+            <ion-label>Disciplina</ion-label>
+
+           
+              <ion-select [(ngModel)]="filtro.disciplina" interface="action-sheet">
+                <ion-option *ngFor="let lista of listaDisciplinas">{{lista.nome}}</ion-option>           
+              </ion-select>
+          </ion-item>
+        </ion-list>
+      
+
+        <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="pesquisar()" >
+            <ion-icon name="search"></ion-icon> BUSCAR
+          </button>
+
+
+
+          <ion-list class="resultado">
+              <ion-item>           
+             
+                <div *ngFor="let lista of listaProfessorPesquisa">
+                  <ion-item>
+                      <ion-avatar item-start>
+                          <img src="../assets/imgs/people.png">
+                        </ion-avatar> 
+      
+                    <ion-col>  <h3> <b>Professor(a):</b> {{lista.nome}}</h3></ion-col> 
+                    <ion-col>  <h6><b>Bloco:</b> {{lista.Bloco}}<p> </p> <b>Sala:</b> {{lista.Sala}} <p> </p><b>Disciplina:</b> {{lista.Disciplina}}</h6></ion-col> 
+                    
+                    <hr>
+                  </ion-item>
+                    </div>
+                
+            
+                  
+              </ion-item>
+            </ion-list>
 </ion-content>
