@@ -1,4 +1,3 @@
-import { ListaProfessorPesquisa } from './../../app/dominio/ListaProfessorPesquisa';
 import { LocalizaServiceProvider } from './../../providers/localiza-service/localiza-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -20,7 +19,7 @@ import { Professor } from '../../app/dominio/Professor';
   templateUrl: 'curso.html',
 })
 export class CursoPage {
-  listaProfessorPesquisa: ListaProfessorPesquisa[] = [];
+  // listaProfessorPesquisa: ListaProfessorPesquisa[] = [];
   filtro: FiltroProfessor = new FiltroProfessor();
   listaCursos: Curso[] = [];
   listaDisciplinas: Disciplina[] = [];
@@ -40,6 +39,11 @@ export class CursoPage {
 
     this.ds.listarDisciplina().subscribe(dadosDoServidor => {
       this.listaDisciplinas = dadosDoServidor;
+    }, error => {
+    });
+
+    this.ps.listar().subscribe(dadosDoServidor => {
+      this.listaProfessores = dadosDoServidor;
     }, error => {
     });
   }

@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FiltroProfessor } from '../../app/dominio/FiltroProfessor';
 import { Disciplina } from '../../app/dominio/Disciplina';
+import { ProfessorResultadoComponent } from '../../components/professor-resultado/professor-resultado';
 
 /**
  * Generated class for the ProfessorPage page.
@@ -30,6 +31,9 @@ export class ProfessorPage {
   ionViewDidLoad() {
     this.ps.listar().subscribe(dadosDoServidor=>{
       this.listaProfessores =dadosDoServidor;
+      console.log(this.listaProfessores);
+      
+      
       
       
     },error => {
@@ -41,6 +45,9 @@ export class ProfessorPage {
       this.listaProfessores =dadosDoServidor;
       
     }, error=>{
+      
+        
+      
   
     });
   
@@ -49,9 +56,22 @@ export class ProfessorPage {
     searchByName(){
       this.ps.searchByName(this.nome).subscribe(dadosDoServidor=>{
       this.listaProfessores =dadosDoServidor;
-      },
-        error=>{});
+      
+      }, error=>{
+       
+         
+        });
     
+    }
+
+    visualizar(professor: Professor){
+      this.navCtrl.push(ProfessorResultadoComponent, {
+        queryParams:
+        {
+          prof: JSON.stringify(professor)
+        },
+        
+      }, {animate: true} ); 
     }
   
 }

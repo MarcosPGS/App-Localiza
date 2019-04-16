@@ -1,6 +1,8 @@
+import { Sala } from './Sala';
+import { Bloco } from './Bloco';
 import { DiaSemana } from './DiaSemana';
 import { Curso } from './Curso';
-import { Local } from './Local';
+
 
 export class Disciplina{
 
@@ -9,7 +11,10 @@ export class Disciplina{
 
     diaSemanas: DiaSemana[]  = [];
     cursos: Curso[]  = [];
-    locals: Local[]  = [];
+    blocos: Bloco[] =[];
+    salas: Sala[]=[];
+
+    
 
     constructor(){
         

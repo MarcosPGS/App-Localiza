@@ -29,10 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule ,
+    HttpClientModule,
     ProfessorPageModule,
     CursoPageModule,
     SobrePageModule,
+    ProfessorPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

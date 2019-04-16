@@ -23,6 +23,7 @@ export class LocalizaServiceProvider {
   NS_PESQUISAR: string ='/pesquisar';
   NS_DISCIPLINA:string = '/disciplina';
   NS_CURSO:string = '/curso';
+  
   URL: string;
 
   constructor(public http: HttpClient) {
@@ -49,6 +50,7 @@ export class LocalizaServiceProvider {
       return this.http.get<Curso[]>(`${this.URL}${this.NS_CURSO}`);
       }
 
+      
 
   pesquisar(f : FiltroProfessor):Observable<Professor[]>{
     return this.http.post<Professor[]>(`${this.HOST}${this.PORTA_SERVICO}${this.NS_PROFESSOR}${this.NS_PESQUISAR}`
@@ -62,4 +64,7 @@ export class LocalizaServiceProvider {
 
 
 
+
+
+   
 }

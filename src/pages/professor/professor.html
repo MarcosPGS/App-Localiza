@@ -22,24 +22,62 @@
 
 <ion-content padding>
 
-    <ion-list>
+    <!-- <ion-list>
         <ion-item>           
        
-          <div *ngFor="let lista of listaProfessores">
+          <div *ngFor="let professor of listaProfessores">
             <ion-item>
                 <ion-avatar item-start>
                     <img src="../assets/imgs/people.png">
                   </ion-avatar> 
 
-              <ion-col>  <h3> <b>Professor(a):</b> {{lista.nome}}</h3></ion-col> 
-              <ion-col>  <h6><b>Bloco:</b> {{lista.Bloco}}<p> </p> <b>Sala:</b> {{lista.Sala}} <p> </p><b>Disciplina:</b> {{lista.Disciplina}}</h6></ion-col> 
-              
-              <hr>
+              <ion-col class="colItem">  <h2 class="titulo">{{professor.nome}}</h2></ion-col>
             </ion-item>
               </div>
           
       
             
+        </ion-item>
+      </ion-list> -->
+
+
+
+
+
+<!-- 
+      <ion-list *ngFor="let professor of listaProfessores">
+        <ion-item>
+          
+          <ion-thumbnail item-start >
+            <img src="../assets/imgs/people.png">
+          </ion-thumbnail>
+          <h2>{{professor.nome}}</h2>
+          <button ion-button clear item-end  (click)="visualizar(professor)"><ion-icon name="arrow-dropright-circle"></ion-icon></button>
+          
+        </ion-item>
+      </ion-list> -->
+
+      <ion-list>
+        <ion-item>           
+        
+          <div *ngFor="let professor of listaProfessores">
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="../assets/imgs/people.png">
+                  </ion-avatar> 
+  
+              <ion-col>  <h2 class="titulo">{{professor.nome}}</h2></ion-col> 
+              <ion-col>  <h6><b>Bloco:</b> {{professor.disciplinas[0].blocos[0].descricao}}
+                <p></p> <b>Sala:</b> {{professor.disciplinas[0].salas[0].descricao}}
+                 <p></p> <b>Disciplina:</b> {{professor.disciplinas[0].nome}}</h6></ion-col> 
+              
+              <hr>
+
+            </ion-item>
+              </div>
+          
+      
+           
         </ion-item>
       </ion-list>
 </ion-content>

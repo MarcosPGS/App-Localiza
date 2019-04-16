@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Professor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+  <ion-list>
+      <ion-item>           
+      
+        <div *ngFor="let professor of listaProfessores">
+          <ion-item>
+              <ion-avatar item-start>
+                  <img src="../assets/imgs/people.png">
+                </ion-avatar> 
+
+            <ion-col>  <h2 class="titulo">{{professor.nome}}</h2></ion-col> 
+            <ion-col>  <h6><b>Bloco:</b> {{professor.disciplinas.blocos}}
+              <p></p> <b>Sala:</b> {{professor.disciplinas.salas}}
+               <p></p> <b>Disciplina:</b> {{professor.disciplinas.nome}}</h6></ion-col> 
+            
+            <hr>
+          </ion-item>
+            </div>
+        
+    
+         
+      </ion-item>
+    </ion-list>
+</ion-content>
